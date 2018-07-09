@@ -16,7 +16,8 @@ module.exports = {
           'vue-style-loader',
           'css-loader'
         ],
-      },      {
+      },      
+      {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: {
@@ -28,7 +29,8 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        exclude: /node_modules/
+        // include: '/node_modules/element-ui/lib/theme-chalk';
+        // include: path.join(__dirname, './node_modules/element-ui');
       },
       {
         test: /\.(png|jpg|gif|svg)$/,

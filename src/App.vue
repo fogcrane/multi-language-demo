@@ -1,7 +1,10 @@
 <template>
   <div id="app">
     <img src="./assets/logo.png">
-    <h1>{{ msg }}</h1>
+
+    <h1>{{ $t('helloWorld') }}</h1>
+    <el-button type="primary" @click="toggleLanguage">{{ $t('toggleLang') }}</el-button>
+    <!-- <h1>{{ msg }}</h1>
     <h2>Essential Links</h2>
     <ul>
       <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
@@ -15,16 +18,30 @@
       <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
       <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
-    </ul>
+    </ul> -->
   </div>
 </template>
 
 <script>
+import Cookies from 'js-cookie';
 export default {
   name: 'app',
-  data () {
+  data() {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      langType: 'zh',
+    }
+  },
+  methods: {
+    toggleLanguage() {
+      if (Cookies.get('language') === 'zh') {
+        this.langType = 'en';
+        Cookies.set('language', 'en');
+        window.location.reload();
+      } else if (Cookies.get('language') === 'en') {
+        this.langType = 'zh';
+        Cookies.set('language', 'zh');
+        window.location.reload();
+      }
     }
   }
 }
